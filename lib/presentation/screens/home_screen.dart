@@ -1,0 +1,52 @@
+import 'package:bike_shop_experiment/presentation/widgets/bike_card.dart';
+import 'package:bike_shop_experiment/presentation/widgets/bike_screen_app_bar.dart';
+import 'package:bike_shop_experiment/presentation/widgets/custom_bot_nav_bar.dart';
+import 'package:bike_shop_experiment/presentation/widgets/list_of_products.dart';
+import 'package:bike_shop_experiment/presentation/widgets/products_list.dart';
+import 'package:bike_shop_experiment/presentation/widgets/transformed_bg.dart';
+import 'package:flutter/material.dart';
+
+import 'package:bike_shop_experiment/core/constants/colors.dart';
+
+class BikeShopScreen extends StatelessWidget {
+  const BikeShopScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    print("Main Build");
+    return const Scaffold(
+      // bottomNavigationBar: CustomNavBar(),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            // BackdropFilter(filter: filter)
+            TransformedBackground(
+              offset: Offset(20, 109),
+            ),
+            // BluredBackground(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: CustomScrollView(
+                physics: ClampingScrollPhysics(),
+                slivers: [
+                  SliverToBoxAdapter(child: SizedBox(height: 24)),
+                  BikeScreenAppBar(),
+                  BikeCard(),
+                  ListOfCategoryCard(),
+                  SliverToBoxAdapter(child: SizedBox(height: 24)),
+                  ProductsList(),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: CustomNavBar(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
