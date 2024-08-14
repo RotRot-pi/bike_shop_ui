@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
+import 'dart:math' as math;
 
+import 'package:bike_shop_experiment/core/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart'
     as inset_box_shadow;
@@ -20,9 +22,30 @@ class _ProductScreenState extends State<ProductScreen> {
   double bikeImageHeight = 0.85;
   double bikeImageWidth = 0.9;
   double cardHeight = 0.15;
+  double turn = 0;
   Curve curve = Curves.easeInOut;
   bool isDescriptionActive = false;
   bool isSpecificationActive = false;
+
+  rotate() {
+    setState(() {
+      if (turn == 0 && cardHeight == 0.15) {
+        print("turn:$turn | cardHeight:$cardHeight");
+        print("POP");
+      } else if (cardHeight == 0.55) {
+        print("turn:$turn | cardHeight:$cardHeight");
+        turn = -0.25;
+      }
+      // else if (turn == -0.25 && cardHeight == 0.55) {
+      //   print("turn:$turn | cardHeight:$cardHeight");
+      //   turn = 0;
+      // }
+      else {
+        print("turn:$turn | cardHeight:$cardHeight");
+        turn = 0;
+      }
+    });
+  }
 
   void toggleButton(String buttonType) {
     setState(() {
@@ -47,6 +70,7 @@ class _ProductScreenState extends State<ProductScreen> {
         bikeImageWidth = 0.9;
         cardHeight = 0.15;
       }
+      rotate();
     });
   }
 
@@ -56,23 +80,30 @@ class _ProductScreenState extends State<ProductScreen> {
       //--> SafeArea
       child: Scaffold(
           //App bar
-          appBar: AppBar(
-            //Product Name
-            title: const Text(
-              "Product Name",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'Poppins',
-                  color: AppColors.white),
-            ),
-            centerTitle: true,
-            leading: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: CustomIconButton(
-                  icon: Icons.arrow_back_ios_new, onPressed: () {}),
-            ),
-          ),
+          appBar: PreferredSize(
+              preferredSize: const Size.fromHeight(80),
+              child: CustomAppBar(
+                turn: turn,
+                onBackButtonPressed: rotate,
+              )),
+          //  AppBar(
+          //   //Product Name
+
+          //   title: const Text(
+          //     "Product Name",
+          //     style: TextStyle(
+          //         fontWeight: FontWeight.bold,
+          //         fontSize: 20,
+          //         fontFamily: 'Poppins',
+          //         color: AppColors.white),
+          //   ),
+          //   centerTitle: true,
+          //   leading: Padding(
+          //     padding: const EdgeInsets.all(4.0),
+          //     child: CustomIconButton(
+          //         icon: Icons.arrow_back_ios_new, onPressed: () {}),
+          //   ),
+          // ),
           //body
           //---> Stack
           body: Stack(
@@ -132,7 +163,7 @@ class ImageContainer extends StatelessWidget {
       // height: MediaQuery.sizeOf(context).height * 0.7,
       height: constrains.maxHeight * bikeImageHeight,
       width: constrains.maxWidth * bikeImageWidth,
-      child: Image.asset("assets/images/mikkel_bike.png"),
+      child: Image.asset(AppImages.robertBike),
     );
   }
 }
@@ -213,7 +244,7 @@ class DescriptionContent extends StatelessWidget {
   final String title;
   final String description;
   final bool isDescriptionActive;
-  ValueNotifier<bool> visbile = ValueNotifier(false);
+  final ValueNotifier<bool> visbile = ValueNotifier(false);
   @override
   Widget build(BuildContext context) {
     // Timer.periodic(const Duration(milliseconds: 500), (timer) {
@@ -354,6 +385,58 @@ class CustomProductCardButton extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 )
               : TextStyle(color: AppColors.white.withOpacity(0.6)),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomAppBar extends StatefulWidget {
+  const CustomAppBar({
+    super.key,
+    required this.turn,
+    required this.onBackButtonPressed,
+  });
+  final double turn;
+  final VoidCallback onBackButtonPressed;
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    print("Turn Value: ${widget.turn}");
+    return Container(
+      height: 80,
+      width: double.infinity,
+      color: Colors.transparent,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            AnimatedRotation(
+              duration: const Duration(milliseconds: 500),
+              turns: widget.turn,
+              child: CustomIconButton(
+                icon: Icons.arrow_back_ios_new,
+                onPressed: widget.onBackButtonPressed,
+              ),
+            ),
+            const Text(
+              "Product Name",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
+                  color: AppColors.white),
+            ),
+            const SizedBox.square(
+              dimension: 60,
+            )
+          ],
         ),
       ),
     );
