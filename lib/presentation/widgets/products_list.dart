@@ -20,14 +20,13 @@ class ProductsList extends StatelessWidget {
         // mainAxisSpacing: 16,
       ),
       itemBuilder: (BuildContext context, int index) {
-        return ProductCardShape(
-            child: ProductCard(
+        return ProductCard(
           isFavorate: AppData.listOfProducts[index]['isFavorite'],
           title: AppData.listOfProducts[index]['title'],
           subtitle: AppData.listOfProducts[index]['subtitle'],
           price: AppData.listOfProducts[index]['price'],
           image: AppData.listOfProducts[index]['image'],
-        ));
+        );
       },
       itemCount: AppData.listOfProducts.length,
     );
