@@ -1,5 +1,6 @@
 import 'package:bike_shop_experiment/presentation/widgets/bike_card.dart';
 import 'package:bike_shop_experiment/presentation/widgets/bike_screen_app_bar.dart';
+import 'package:bike_shop_experiment/presentation/widgets/custom_background.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_bot_nav_bar.dart';
 import 'package:bike_shop_experiment/presentation/widgets/list_of_products.dart';
 import 'package:bike_shop_experiment/presentation/widgets/products_list.dart';
@@ -8,8 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'package:bike_shop_experiment/core/constants/colors.dart';
 
-class BikeShopScreen extends StatelessWidget {
-  const BikeShopScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,8 @@ class BikeShopScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            // BackdropFilter(filter: filter)
-            TransformedBackground(
-              offset: Offset(20, 109),
-            ),
+            CustomBackground(),
+
             // BluredBackground(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),

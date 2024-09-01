@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bike_shop_experiment/core/constants/colors.dart';
+import 'package:bike_shop_experiment/presentation/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -19,26 +20,34 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("ProductCard Build");
-    return Container(
-      transform: Matrix4.skewY(0.1),
-      height: 208,
-      width: 165,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16), // Smaller top-right corner
-          bottomLeft: Radius.circular(16),
-          bottomRight: Radius.circular(85),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return ProductScreen(
+              title: title, subtitle: subtitle, price: price, image: image);
+        }));
+      },
+      child: Container(
+        transform: Matrix4.skewY(0.1),
+        height: 208,
+        width: 165,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16), // Smaller top-right corner
+            bottomLeft: Radius.circular(16),
+            bottomRight: Radius.circular(85),
+          ),
+          color: Colors.transparent,
         ),
-        color: Colors.transparent,
+        child: ProductInfo(
+            isFavorate: isFavorate,
+            image: image,
+            title: title,
+            subtitle: subtitle,
+            price: price),
       ),
-      child: ProductInfo(
-          isFavorate: isFavorate,
-          image: image,
-          title: title,
-          subtitle: subtitle,
-          price: price),
     );
   }
 }
