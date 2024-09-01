@@ -25,7 +25,10 @@ class ProductScreen extends StatefulWidget {
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductScreenState extends State<ProductScreen>
+    with TickerProviderStateMixin {
+  late final AnimationController animationController;
+
   double bikeImageHeight = 0.85;
   double bikeImageWidth = 0.9;
   double cardHeight = 0.15;
@@ -67,6 +70,15 @@ class _ProductScreenState extends State<ProductScreen> {
     } else {
       Navigator.of(context).pop();
     }
+  }
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    super.initState();
   }
 
   @override
