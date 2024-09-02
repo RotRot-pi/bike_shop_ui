@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:ui';
+
 import 'package:bike_shop_experiment/core/constants/colors.dart';
 import 'package:bike_shop_experiment/presentation/screens/product_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,7 @@ class ProductCard extends StatelessWidget {
         //Todo: Make a slide transition to the next screen
         Navigator.of(context).push(
           PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 250),
+            transitionDuration: const Duration(milliseconds: 500),
             pageBuilder: (context, animation, secondaryAnimation) =>
                 SlideTransition(
               position: Tween<Offset>(
@@ -82,36 +84,35 @@ class ProductCard extends StatelessWidget {
                   ),
                   borderRadius: DynamicBorderRadius.all(
                       DynamicRadius.circular(16.toPXLength))),
-              // child: BackdropFilter(
-              //   filter: ImageFilter.blur(sigmaX: 60.0, sigmaY: 60.0),
-              child: Container(
-                transform: Matrix4.skewY(0.1),
-                height: 208,
-                width: 165,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16), // Smaller top-right corner
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(85),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 60.0, sigmaY: 60.0),
+                child: Container(
+                  transform: Matrix4.skewY(0.1),
+                  height: 208,
+                  width: 165,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16), // Smaller top-right corner
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(85),
+                    ),
+                    color: Colors.transparent,
                   ),
-                  color: Colors.transparent,
+                  child: ProductInfo(
+                      isFavorate: isFavorate,
+                      image: image,
+                      title: title,
+                      subtitle: subtitle,
+                      price: price),
                 ),
-                child: ProductInfo(
-                    isFavorate: isFavorate,
-                    image: image,
-                    title: title,
-                    subtitle: subtitle,
-                    price: price),
               ),
             ),
           ],
         ),
       ),
-
-      // ),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:morphable_shape/morphable_shape.dart';
 
@@ -59,46 +61,46 @@ class BikeCard extends StatelessWidget {
             ),
           ),
           child: ClipRRect(
-            // child: BackdropFilter(
-            //   filter: ImageFilter.blur(sigmaX: 60.0, sigmaY: 60.0),
-            child: Container(
-              height: 240,
-              padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16), // Smaller top-right corner
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(85),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 60.0, sigmaY: 60.0),
+              child: Container(
+                height: 240,
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16), // Smaller top-right corner
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(85),
+                  ),
+                  color: Colors.transparent,
                 ),
-                color: Colors.transparent,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Center(child: Image.asset(AppImages.electricBike)),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  const Expanded(
-                    child: Text(
-                      "30% OFF",
-                      style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Center(child: Image.asset(AppImages.electricBike)),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const Expanded(
+                      child: Text(
+                        "30% OFF",
+                        style: TextStyle(
+                            color: AppColors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
       ),
-      // ),
     );
   }
 }

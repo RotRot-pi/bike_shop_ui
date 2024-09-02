@@ -17,7 +17,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      height: 100, // Increased height to accommodate the elevated icon
+      height: 100,
       child: Stack(
         children: [
           Positioned(
@@ -25,7 +25,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
             left: 0,
             right: 0,
             child: Container(
-              height: 60, // Height of the actual navigation bar
+              height: 60,
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               decoration: BoxDecoration(
                 backgroundBlendMode: BlendMode.dstOut,
@@ -45,8 +45,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
           ),
           if (_currentIndex != -1)
             Positioned(
-              bottom:
-                  0, // Position the elevated icon to extend above the nav bar
+              bottom: 0,
               left: _calculateLeftPosition(),
               child: _buildElevatedIcon(_currentIndex),
             ),
@@ -129,8 +128,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
   }
 
   double _calculateLeftPosition() {
-    const double itemWidth = 72.0; // Approximate width of each nav item
-    const double startPadding = 16.0; // Left padding of the nav bar
+    const double itemWidth = 72.0;
+    const double startPadding = 16.0;
     return startPadding + (_currentIndex * itemWidth) + (itemWidth - 60) / 2;
   }
 }

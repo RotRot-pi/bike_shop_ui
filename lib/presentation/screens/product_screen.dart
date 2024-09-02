@@ -27,7 +27,14 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen>
     with TickerProviderStateMixin {
-  late final AnimationController animationController;
+  late final AnimationController _backgroundController;
+  late final AnimationController _bikeController;
+  late final AnimationController _cardController;
+
+  late final Animation<double> _backgroundAnimation;
+  late final Animation<Offset> _bikePositionAnimation;
+  late final Animation<double> _bikeRotationAnimation;
+  late final Animation<Offset> _cardAnimation;
 
   double bikeImageHeight = 0.85;
   double bikeImageWidth = 0.9;
@@ -43,13 +50,9 @@ class _ProductScreenState extends State<ProductScreen>
       if (buttonType == 'description') {
         isDescriptionActive = !isDescriptionActive;
         isSpecificationActive = false;
-        print("Is Description Active: $isDescriptionActive");
-        print("Is Specification Active: $isSpecificationActive");
       } else {
         isSpecificationActive = !isSpecificationActive;
         isDescriptionActive = false;
-        print("Is Description Active: $isDescriptionActive");
-        print("Is Specification Active: $isSpecificationActive");
       }
       isCardUp = isDescriptionActive || isSpecificationActive;
       if (isCardUp) {
@@ -74,54 +77,129 @@ class _ProductScreenState extends State<ProductScreen>
 
   @override
   void initState() {
-    animationController = AnimationController(
+    super.initState();
+
+    _backgroundController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-    super.initState();
+    _backgroundAnimation = CurvedAnimation(
+      parent: _backgroundController,
+      curve: Curves.easeIn,
+    );
+
+    _bikeController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    _bikePositionAnimation = Tween<Offset>(
+      begin: const Offset(-2.0, 0.0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _bikeController,
+      curve: Curves.easeInOut,
+    ));
+
+    _bikeRotationAnimation = Tween<double>(
+      begin: -0.0872, // 15 degrees in radians
+      end: 0.0,
+    ).animate(CurvedAnimation(
+      parent: _bikeController,
+      curve: Curves.easeInOut,
+    ));
+
+    _cardController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    _cardAnimation = Tween<Offset>(
+      begin: const Offset(0.0, 1.0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _cardController,
+      curve: Curves.easeInOut,
+    ));
+
+    Future.delayed(const Duration(milliseconds: 500), () {
+      _backgroundController.forward();
+    });
+    _backgroundController.addListener(() {
+      if (_backgroundController.isCompleted) {
+        // Delay the bike and card animations
+        Future.delayed(const Duration(milliseconds: 200), () {
+          _bikeController.forward();
+          _cardController.forward();
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _backgroundController.dispose();
+    _bikeController.dispose();
+    _cardController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(80),
-              child: CustomAppBar(
-                isCardUp: isCardUp,
-                onButtonPressed: handleAppBarButtonPress,
-                title: widget.title,
-              )),
-          body: Stack(
-            children: [
-              // const TransformedBackground(offset: Offset(100, -60)),
-              const CustomBackground(),
-              LayoutBuilder(builder: (context, constrains) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ImageContainer(
-                      constrains: constrains,
-                      curve: curve,
-                      bikeImageHeight: bikeImageHeight,
-                      bikeImageWidth: bikeImageWidth,
-                      image: widget.image,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(80),
+          child: CustomAppBar(
+            isCardUp: isCardUp,
+            onButtonPressed: handleAppBarButtonPress,
+            title: widget.title,
+          ),
+        ),
+        body: Stack(
+          children: [
+            FadeTransition(
+              opacity: _backgroundAnimation,
+              child: const CustomBackground(),
+            ),
+            LayoutBuilder(builder: (context, constrains) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SlideTransition(
+                    position: _bikePositionAnimation,
+                    child: RotationTransition(
+                      turns: _bikeRotationAnimation,
+                      child: ImageContainer(
+                        constrains: constrains,
+                        curve: curve,
+                        bikeImageHeight: bikeImageHeight,
+                        bikeImageWidth: bikeImageWidth,
+                        image: widget.image,
+                      ),
                     ),
-                    CustomProductBottomCard(
-                      title: widget.title,
-                      constrains: constrains,
-                      cardHeight: cardHeight,
-                      isDescriptionActive: isDescriptionActive,
-                      isSpecificationActive: isSpecificationActive,
-                      onDescriptionPressed: () => toggleButton('description'),
-                      onSpecificationPressed: () =>
-                          toggleButton('specification'),
-                    )
-                  ],
-                );
-              })
-            ],
-          )),
+                  ),
+                  Flexible(
+                    child: SlideTransition(
+                      position: _cardAnimation,
+                      child: CustomProductBottomCard(
+                        title: widget.title,
+                        constrains: constrains,
+                        cardHeight: cardHeight,
+                        isDescriptionActive: isDescriptionActive,
+                        isSpecificationActive: isSpecificationActive,
+                        onDescriptionPressed: () => toggleButton('description'),
+                        onSpecificationPressed: () =>
+                            toggleButton('specification'),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+          ],
+        ),
+      ),
     );
   }
 }

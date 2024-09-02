@@ -26,46 +26,44 @@ class CustomProductBottomCard extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
-        height: constrains.maxHeight * cardHeight,
-        width: double.infinity,
-        padding: const EdgeInsets.all(24),
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: AppColors.linearDarkGradient),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.elliptical(35, 40),
-              topRight: Radius.elliptical(35, 40),
-            )),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                CustomProductCardButton(
-                  title: "Description",
-                  isActive: isDescriptionActive,
-                  onPressed: onDescriptionPressed,
-                ),
-                CustomProductCardButton(
-                  title: "Specification",
-                  isActive: isSpecificationActive,
-                  onPressed: onSpecificationPressed,
-                ),
-              ],
-            ),
-            // if (isDescriptionActive)
-            DescriptionContent(
-              cardHeight: cardHeight,
-              isDescriptionActive: isDescriptionActive,
-              title: title,
-              description:
-                  "The $title uses the same design as the most iconic bikes from PEUGEOT Cycles' 130-year history and combines it with agile, dynamic performance that's perfectly suited to navigating today's cities. As well as a lugged steel frame and iconic PEUGEOT black-and-white chequer design, this city bike also features a 16-speed Shimano Claris drivetrain.",
-            )
-          ],
-        ),
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      height: constrains.maxHeight * cardHeight,
+      width: double.infinity,
+      padding: const EdgeInsets.all(24),
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: AppColors.linearDarkGradient),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.elliptical(35, 40),
+            topRight: Radius.elliptical(35, 40),
+          )),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomProductCardButton(
+                title: "Description",
+                isActive: isDescriptionActive,
+                onPressed: onDescriptionPressed,
+              ),
+              CustomProductCardButton(
+                title: "Specification",
+                isActive: isSpecificationActive,
+                onPressed: onSpecificationPressed,
+              ),
+            ],
+          ),
+          // if (isDescriptionActive)
+          DescriptionContent(
+            cardHeight: cardHeight,
+            isDescriptionActive: isDescriptionActive,
+            title: title,
+            description:
+                "The $title uses the same design as the most iconic bikes from PEUGEOT Cycles' 130-year history and combines it with agile, dynamic performance that's perfectly suited to navigating today's cities. As well as a lugged steel frame and iconic PEUGEOT black-and-white chequer design, this city bike also features a 16-speed Shimano Claris drivetrain.",
+          )
+        ],
       ),
     );
   }
