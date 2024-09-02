@@ -1,16 +1,30 @@
-# bike_shop_experiment
+# Bike Shop UI
 
-A new Flutter project.
+A simple and visually appealing Bike Shop UI built with Flutter. 
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Displays a list of bike products with dynamic cards.
+- Features a visually engaging category list.
+- Includes a product details screen with smooth animations.
 
-A few resources to get you started if this is your first Flutter project:
+## Video
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![video](screenshots/bike_shop_ui.gif)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+
+![screenshot](screenshots/home.png)
+![screenshot](screenshots/product_details_1.png)
+![screenshot](screenshots/product_details_2.png)
+
+## Installation
+
+1. Clone this repository: `git clone https://github.com/yourusername/bike-shop-ui.git`
+2. Navigate to the project directory: `cd bike-shop-ui`
+3. Install dependencies: `flutter pub get`
+4. Run the app: `flutter run`
+
+## Figma Design
+
+This UI was inspired by a Figma design by [Sourasith] ([link to design](https://www.figma.com/community/file/1149336740234053658)).
