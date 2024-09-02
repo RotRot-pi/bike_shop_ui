@@ -1,6 +1,6 @@
 import 'package:bike_shop_experiment/presentation/widgets/bike_card.dart';
 import 'package:bike_shop_experiment/presentation/widgets/bike_screen_app_bar.dart';
-import 'package:bike_shop_experiment/presentation/widgets/custom_background.dart';
+import 'package:bike_shop_experiment/presentation/widgets/custom_home_background.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_bot_nav_bar.dart';
 import 'package:bike_shop_experiment/presentation/widgets/list_of_categories.dart';
 import 'package:bike_shop_experiment/presentation/widgets/products_list.dart';
@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            CustomBackground(),
+            CustomHomeBackground(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomScrollView(

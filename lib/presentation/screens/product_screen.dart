@@ -1,7 +1,7 @@
+import 'package:bike_shop_experiment/presentation/widgets/custom_product_background.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bike_shop_experiment/core/constants/colors.dart';
-import 'package:bike_shop_experiment/presentation/widgets/custom_background.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_icon_button.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_product_bottom_card.dart';
 
@@ -145,6 +145,7 @@ class _ProductScreenState extends State<ProductScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80),
           child: CustomAppBar(
@@ -154,10 +155,11 @@ class _ProductScreenState extends State<ProductScreen>
           ),
         ),
         body: Stack(
+          fit: StackFit.expand,
           children: [
             FadeTransition(
               opacity: _backgroundAnimation,
-              child: const CustomBackground(),
+              child: const CustomProductBackground(),
             ),
             LayoutBuilder(builder: (context, constrains) {
               return Column(
