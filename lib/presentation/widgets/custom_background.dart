@@ -27,8 +27,9 @@ class CustomBackGroundClipper extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     Path path = Path();
-    path.moveTo(size.width, 0);
-    path.lineTo(0, size.height);
+    path.moveTo(size.width, 160);
+    path.lineTo(size.width * 0.8, 100);
+    path.lineTo(-25, size.height);
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, 0);
     path.close();
