@@ -12,7 +12,6 @@ class BikeScreenAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     print("BikeScreenAppBar Build");
     return SliverAppBar(
-      expandedHeight: 50,
       pinned: true,
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,

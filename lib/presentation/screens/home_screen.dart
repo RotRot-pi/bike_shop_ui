@@ -2,7 +2,7 @@ import 'package:bike_shop_experiment/presentation/widgets/bike_card.dart';
 import 'package:bike_shop_experiment/presentation/widgets/bike_screen_app_bar.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_background.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_bot_nav_bar.dart';
-import 'package:bike_shop_experiment/presentation/widgets/list_of_products.dart';
+import 'package:bike_shop_experiment/presentation/widgets/list_of_categories.dart';
 import 'package:bike_shop_experiment/presentation/widgets/products_list.dart';
 import 'package:bike_shop_experiment/presentation/widgets/transformed_bg.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +28,16 @@ class HomeScreen extends StatelessWidget {
               child: CustomScrollView(
                 physics: ClampingScrollPhysics(),
                 slivers: [
-                  SliverToBoxAdapter(child: SizedBox(height: 24)),
-                  BikeScreenAppBar(),
+                  SliverPadding(
+                    padding: EdgeInsets.only(top: 24.0),
+                    sliver: BikeScreenAppBar(),
+                  ),
                   BikeCard(),
                   ListOfCategoryCard(),
-                  SliverToBoxAdapter(child: SizedBox(height: 24)),
-                  ProductsList(),
+                  SliverPadding(
+                    padding: EdgeInsets.only(top: 24.0),
+                    sliver: ProductsList(),
+                  ),
                 ],
               ),
             ),

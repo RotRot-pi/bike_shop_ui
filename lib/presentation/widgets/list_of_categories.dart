@@ -13,7 +13,7 @@ class ListOfCategoryCard extends StatefulWidget {
 }
 
 class _ListOfCategoryCardState extends State<ListOfCategoryCard> {
-  int selectedIndex = -1; // -1 means no selection
+  int selectedIndex = 0; // -1 means no selection
 
   void _onCardPressed(int index) {
     setState(() {

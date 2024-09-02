@@ -1,12 +1,12 @@
 import 'package:bike_shop_experiment/core/app_theme.dart';
 import 'package:bike_shop_experiment/presentation/screens/home_screen.dart';
-import 'package:bike_shop_experiment/presentation/screens/product_screen.dart';
-import 'package:bike_shop_experiment/presentation/widgets/product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   // debugRepaintRainbowEnabled = true;
-  debugInvertOversizedImages = true;
+  // debugInvertOversizedImages = true;
+  // debugPaintSizeEnabled = true;
   runApp(const MyApp());
 }
 

@@ -18,9 +18,8 @@ class CategoriesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      double top = 0.0;
-      top = constraints.biggest.height;
-      print("Bigest hight :$top");
+      double diagonalOffset = constraints.biggest.height;
+
       return Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -61,9 +60,11 @@ class CategoriesCard extends StatelessWidget {
               ),
             ),
           ),
-          top > 56.0
-              ? SizedBox(
-                  height: 8 * (index.toDouble() + 1),
+          diagonalOffset > 56.0
+              ? Flexible(
+                  child: SizedBox(
+                    height: 8 * (index.toDouble() + 1),
+                  ),
                 )
               : const SizedBox()
         ],

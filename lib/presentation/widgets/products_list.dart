@@ -1,5 +1,4 @@
 import 'package:bike_shop_experiment/presentation/widgets/product_card.dart';
-import 'package:bike_shop_experiment/presentation/widgets/products_card_shape.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bike_shop_experiment/data/data.dart';
@@ -15,7 +14,7 @@ class ProductsList extends StatelessWidget {
     return SliverGrid.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.65,
+        childAspectRatio: 3 / 4,
         crossAxisSpacing: 16,
         // mainAxisSpacing: 16,
       ),
