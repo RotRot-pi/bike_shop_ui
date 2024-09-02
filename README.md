@@ -10,13 +10,13 @@ A simple and visually appealing Bike Shop UI built with Flutter.
 
 ## Video
 
-![video](screenshots/bike_shop_ui.gif)
+| ![video](screenshots/bike_shop_ui.gif) |
+|----------------------------------------|
 
 ## Screenshots
 
-![screenshot](screenshots/home.png)
-![screenshot](screenshots/product_details_1.png)
-![screenshot](screenshots/product_details_2.png)
+| ![screenshot](screenshots/home.png) | ![screenshot](screenshots/product_details_1.png) | ![screenshot](screenshots/product_details_2.png) |
+|-------------------------------------|--------------------------------------------------|--------------------------------------------------|
 
 ## Installation
 
