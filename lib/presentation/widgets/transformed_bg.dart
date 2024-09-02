@@ -9,7 +9,6 @@ class TransformedBackground extends StatelessWidget {
   final Offset offset;
   @override
   Widget build(BuildContext context) {
-    print("Transformed Build");
     return RepaintBoundary(
       child: Transform.translate(
         offset: offset,

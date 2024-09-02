@@ -1,7 +1,6 @@
 import 'package:bike_shop_experiment/core/app_theme.dart';
 import 'package:bike_shop_experiment/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 void main() {
   // debugRepaintRainbowEnabled = true;

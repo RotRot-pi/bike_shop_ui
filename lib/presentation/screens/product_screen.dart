@@ -1,12 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:bike_shop_experiment/core/constants/colors.dart';
-import 'package:bike_shop_experiment/core/constants/images.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_background.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_icon_button.dart';
 import 'package:bike_shop_experiment/presentation/widgets/custom_product_bottom_card.dart';
-import 'package:bike_shop_experiment/presentation/widgets/transformed_bg.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({

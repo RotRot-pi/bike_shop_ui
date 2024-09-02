@@ -13,7 +13,6 @@ class BikeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Bike Card Build");
     return SliverToBoxAdapter(
       child: RepaintBoundary(
         child: Card(

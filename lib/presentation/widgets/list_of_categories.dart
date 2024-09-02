@@ -23,7 +23,6 @@ class _ListOfCategoryCardState extends State<ListOfCategoryCard> {
 
   @override
   Widget build(BuildContext context) {
-    print("List Build");
     return SliverAppBar(
       elevation: 0,
       pinned: true,

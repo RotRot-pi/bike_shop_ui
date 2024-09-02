@@ -10,7 +10,6 @@ class BikeScreenAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("BikeScreenAppBar Build");
     return SliverAppBar(
       pinned: true,
       backgroundColor: Colors.transparent,
