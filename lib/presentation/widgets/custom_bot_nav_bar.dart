@@ -1,5 +1,4 @@
 import 'package:bike_shop_experiment/core/constants/colors.dart';
-import 'package:bike_shop_experiment/core/constants/images.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
