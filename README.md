@@ -26,4 +26,4 @@ A simple and visually appealing Bike Shop UI built with Flutter.
 
 ## Figma Design
 
-This UI was inspired by a Figma design by [Sourasith] ([link to design](https://www.figma.com/community/file/1149336740234053658)).
+This UI was inspired by a Figma design by [Sourasith] (https://www.figma.com/community/file/1149336740234053658).
