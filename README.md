@@ -1,6 +1,6 @@
 # Bike Shop UI
 
-A simple and visually appealing Bike Shop UI built with Flutter. 
+A simple and visually appealing Bike Shop UI built with Flutter.
 
 ## Features
 
