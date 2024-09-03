@@ -19,8 +19,8 @@ A simple and visually appealing Bike Shop UI built with Flutter.
 
 ## Installation
 
-1. Clone this repository: `git clone https://github.com/yourusername/bike-shop-ui.git`
-2. Navigate to the project directory: `cd bike-shop-ui`
+1. Clone this repository: `git clone https://github.com/yourusername/bike_shop_ui.git`
+2. Navigate to the project directory: `cd bike_shop_ui`
 3. Install dependencies: `flutter pub get`
 4. Run the app: `flutter run`
 
